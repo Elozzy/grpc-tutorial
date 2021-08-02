@@ -1,0 +1,30 @@
+syntax= "proto3";
+option go_package = "./services/user";
+//===================================
+
+message NewUser {
+    string name = 1;
+    int32 age = 2;
+}
+
+message User {
+    string id = 1;
+    int32 age = 2;
+    string name =3;
+}
+
+message UserID {
+    string id = 1;
+}
+
+message StandardResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+
+
+service UserService {
+    rpc CreateUser(NewUser) returns (User){}
+    rpc DeleteUser(UserID) returns (StandardResponse){}
+}
